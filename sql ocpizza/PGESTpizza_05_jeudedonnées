@@ -1,0 +1,67 @@
+# Liste des Employés
+SELECT fonction, nom || ' ' || prenom AS Employes
+FROM employe
+ORDER BY fonction DESC;
+
+# Liste des employés dans la pizzeria 8
+
+SELECT * FROM employe
+WHERE id_pizzeria = 4
+OR id_pizzeria = 8;
+
+# Liste des Pizzaiolo de la pizzeria 4
+
+SELECT * FROM employe
+WHERE fonction = 'Pizzaiolo'
+AND id_pizzeria = 4;
+
+# Liste des clients 
+
+SELECT  nom || ' ' || prenom AS "Clients", numero_portable, adresse, code_postale, ville 
+FROM client;
+
+# Nombre de commande par statut
+
+SELECT count(id_commande), statut 
+FROM commande
+GROUP BY statut;
+
+# Recette des pizza (nom de la pizza avec ingrédient contenu)
+
+SELECT nom_pizza, ingredient.nom_ingredient
+FROM pizza
+JOIN recette
+ON pizza.id_pizza = recette.id_pizza
+JOIN ingredient
+ON ingredient.id_ingredient = recette.id_ingredient;
+
+# Voir le nombre de pizza qui utilise de la sauce tomate 
+
+SELECT count(nom_pizza), ingredient.nom_ingredient
+FROM pizza
+JOIN recette
+ON pizza.id_pizza = recette.id_pizza
+JOIN ingredient
+ON ingredient.id_ingredient = recette.id_ingredient
+WHERE ingredient.nom_ingredient = 'Sauce Tomate'
+GROUP BY ingredient.nom_ingredient;
+
+# Stock de la pizzeria N4
+
+SELECT pizzeria.id_pizzeria, ingredient.nom_ingredient, stock.quantitee_stock
+FROM pizzeria
+JOIN stock 
+ON pizzeria.id_pizzeria = stock.id_pizzeria
+AND pizzeria.id_pizzeria = 4
+JOIN ingredient
+ON ingredient.id_ingredient = stock.id_ingredient;
+
+# Stock de Merguez de toutes les pizzerias
+
+SELECT pizzeria.id_pizzeria, ingredient.nom_ingredient, stock.quantitee_stock
+FROM pizzeria
+JOIN stock 
+ON pizzeria.id_pizzeria = stock.id_pizzeria
+JOIN ingredient
+ON ingredient.id_ingredient = stock.id_ingredient
+AND ingredient.nom_ingredient = 'Merguez';

@@ -1,0 +1,175 @@
+
+CREATE SEQUENCE public.ingredient_id_ingredient_seq_1;
+
+CREATE TABLE public.Ingredient (
+                id_Ingredient INTEGER NOT NULL DEFAULT nextval('public.ingredient_id_ingredient_seq_1'),
+                nom_ingredient VARCHAR NOT NULL,
+                CONSTRAINT ingredient_pk PRIMARY KEY (id_Ingredient)
+);
+
+
+ALTER SEQUENCE public.ingredient_id_ingredient_seq_1 OWNED BY public.Ingredient.id_Ingredient;
+
+CREATE SEQUENCE public.pizza_id_pizza_seq;
+
+CREATE TABLE public.Pizza (
+                id_pizza INTEGER NOT NULL DEFAULT nextval('public.pizza_id_pizza_seq'),
+                nom_Pizza VARCHAR NOT NULL,
+                prix NUMERIC(5,2) NOT NULL,
+                CONSTRAINT pizza_pk PRIMARY KEY (id_pizza)
+);
+
+
+ALTER SEQUENCE public.pizza_id_pizza_seq OWNED BY public.Pizza.id_pizza;
+
+CREATE TABLE public.Recette (
+                id_ingredient INTEGER NOT NULL,
+                id_pizza INTEGER NOT NULL,
+                quantitee_dans_recette INTEGER NOT NULL,
+                CONSTRAINT recette_pk PRIMARY KEY (id_ingredient, id_pizza)
+);
+
+
+CREATE SEQUENCE public.p_nom_seq_1_1;
+
+CREATE TABLE public.Pizzeria (
+                id_pizzeria INTEGER NOT NULL DEFAULT nextval('public.p_nom_seq_1_1'),
+                numero_telephone NUMERIC(10) NOT NULL,
+                adresse VARCHAR NOT NULL,
+                code_postale INTEGER NOT NULL,
+                ville VARCHAR NOT NULL,
+                CONSTRAINT pizzeria_pk PRIMARY KEY (id_pizzeria)
+);
+
+
+ALTER SEQUENCE public.p_nom_seq_1_1 OWNED BY public.Pizzeria.id_pizzeria;
+
+CREATE TABLE public.Stock (
+                id_Ingredient INTEGER NOT NULL,
+                id_pizzeria INTEGER NOT NULL,
+                quantitee_stock INTEGER NOT NULL,
+                CONSTRAINT stock_pk PRIMARY KEY (id_Ingredient, id_pizzeria)
+);
+
+
+CREATE SEQUENCE public.client_id_client_seq;
+
+CREATE TABLE public.Client (
+                id_client INTEGER NOT NULL DEFAULT nextval('public.client_id_client_seq'),
+                numero_portable NUMERIC(10) NOT NULL,
+                nom VARCHAR NOT NULL,
+                adresse_mail VARCHAR NOT NULL,
+                prenom VARCHAR NOT NULL,
+                adresse VARCHAR NOT NULL,
+                code_postale VARCHAR NOT NULL,
+                ville VARCHAR NOT NULL,
+                mdp VARCHAR NOT NULL,
+                CONSTRAINT client_pk PRIMARY KEY (id_client)
+);
+
+
+ALTER SEQUENCE public.client_id_client_seq OWNED BY public.Client.id_client;
+
+CREATE SEQUENCE public.commande_id_seq;
+
+CREATE TABLE public.Commande (
+                id_commande INTEGER NOT NULL DEFAULT nextval('public.commande_id_seq'),
+                id_pizzeria INTEGER NOT NULL,
+                id_client INTEGER NOT NULL,
+                date_heure TIMESTAMP NOT NULL,
+                statut VARCHAR NOT NULL,
+                payee BOOLEAN NOT NULL,
+                livraison BOOLEAN NOT NULL,
+                CONSTRAINT commande_pk PRIMARY KEY (id_commande)
+);
+
+
+ALTER SEQUENCE public.commande_id_seq OWNED BY public.Commande.id_commande;
+
+CREATE TABLE public.Quantitee (
+                id_pizza INTEGER NOT NULL,
+                id_commande INTEGER NOT NULL,
+                quantitee INTEGER NOT NULL,
+                CONSTRAINT quantitee_pk PRIMARY KEY (id_pizza, id_commande)
+);
+
+
+CREATE SEQUENCE public.employe_id_employe_seq;
+
+CREATE TABLE public.Employe (
+                id_employe INTEGER NOT NULL DEFAULT nextval('public.employe_id_employe_seq'),
+                id_pizzeria INTEGER NOT NULL,
+                fonction VARCHAR NOT NULL,
+                adresse_mail VARCHAR NOT NULL,
+                numero_portable NUMERIC(10) NOT NULL,
+                nom VARCHAR NOT NULL,
+                prenom VARCHAR NOT NULL,
+                mdp VARCHAR NOT NULL,
+                CONSTRAINT employ_pk PRIMARY KEY (id_employe, id_pizzeria)
+);
+
+
+ALTER SEQUENCE public.employe_id_employe_seq OWNED BY public.Employe.id_employe;
+
+ALTER TABLE public.Recette ADD CONSTRAINT ingredient_composee_fk
+FOREIGN KEY (id_ingredient)
+REFERENCES public.Ingredient (id_Ingredient)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.Stock ADD CONSTRAINT ingredient_stock_fk
+FOREIGN KEY (id_Ingredient)
+REFERENCES public.Ingredient (id_Ingredient)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.Quantitee ADD CONSTRAINT pizza_quantitee_fk
+FOREIGN KEY (id_pizza)
+REFERENCES public.Pizza (id_pizza)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.Recette ADD CONSTRAINT pizza_recette_fk
+FOREIGN KEY (id_pizza)
+REFERENCES public.Pizza (id_pizza)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.Stock ADD CONSTRAINT pizzeria_stock_fk
+FOREIGN KEY (id_pizzeria)
+REFERENCES public.Pizzeria (id_pizzeria)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.Commande ADD CONSTRAINT pizzeria_commande_fk
+FOREIGN KEY (id_pizzeria)
+REFERENCES public.Pizzeria (id_pizzeria)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.Employe ADD CONSTRAINT pizzeria_employe_fk
+FOREIGN KEY (id_pizzeria)
+REFERENCES public.Pizzeria (id_pizzeria)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.Commande ADD CONSTRAINT client_commande_fk
+FOREIGN KEY (id_client)
+REFERENCES public.Client (id_client)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.Quantitee ADD CONSTRAINT commande_quantitee_fk
+FOREIGN KEY (id_commande)
+REFERENCES public.Commande (id_commande)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;

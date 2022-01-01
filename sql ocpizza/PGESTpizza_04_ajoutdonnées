@@ -1,0 +1,222 @@
+
+
+INSERT INTO public.ingredient
+	(nom_Ingredient) 
+VALUES 
+	('Fromage de Chevre'),
+	('Chorizo'),
+	('Merguez'),
+	('Sauce Tomate'),
+	('Crème Fraîche'),
+	('Olive'),
+	('Miel'),
+	('Poivrons'),
+	('Poulet'),
+	('Steak Haché'),
+	('Emmental'),
+	('Pate à pizza'),
+	('Or');
+
+
+INSERT INTO public.pizza
+	(nom_pizza, prix)
+VALUES
+	('Margarita', 13.50),
+	('Peperoni', 13.75),
+	('Chevre Miel', 10.50),
+	('Merguez', 11.50),
+	('Que de la sauce', 5.50),
+	('Pizza aux olives’, 5.50),
+	(‘Pizza aux poivrons', 5.50),
+	('Pizza Doree', 85.50);
+
+
+INSERT INTO public.recette
+	(id_pizza, id_ingredient, quantitee_dans_recette)
+VALUES
+	(1, 12, 200),
+	(1, 11, 100),
+	(1, 4, 50),
+	(2, 12, 200),
+	(2, 2, 100),
+	(2, 4, 50),
+	(3, 12, 200),
+	(3, 1, 100),
+	(3, 4, 50),
+	(3, 7, 50),
+	(4, 12, 200),
+	(4, 3, 100),
+	(4, 4, 50),
+	(5, 12, 200),
+	(5, 4, 50),
+	(6, 12, 200),
+	(6, 6, 100),
+	(6, 4, 50),
+	(7, 12, 200),
+	(7, 8, 100),
+	(7, 4, 50),
+	(8, 12, 200),
+	(8, 13, 100),
+	(8, 4, 50);
+
+
+
+INSERT INTO public.pizzeria
+	(numero_telephone, adresse, code_postale, ville) 
+VALUES 
+	(0584598746, '25 chemin dOC P7', 31200, 'Toulouse'),
+	(7568245683, '57 Heaven Way ', 75016, 'Paris'),
+	(7456845123, '02 Perfect Pizz', 97300, 'Guyane'),
+	(9463851205, '75 Pole Fiction', 97100, 'Guadeloupe'),
+	(2789578660, '56 Midgard', 97200, 'Martinique'),
+	(4507894564, '25 Kilimonjaro', 97400, 'Reunion'),
+	(7834567876, '7 Avenue de lamour', 69000, 'Lyon'),
+	(6785428940, '25 chemin de la pizza', 31400, 'Toulouse');
+
+
+INSERT INTO public.stock
+	(id_pizzeria, id_ingredient, quantitee_stock)
+VALUES
+	(1, 1, 2000),
+	(1, 2, 4500),
+	(2, 3, 2060),
+	(2, 4, 690),
+	(3, 5, 400),
+	(3, 6, 9000),
+	(4, 7, 20000),
+	(4, 8, 7800),
+	(5, 9, 2980),
+	(5, 10, 2230),
+	(6, 11, 650),
+	(6, 12, 45600),
+	(7, 13, 2960),
+	(7, 9, 6420),
+	(8, 5, 3050),
+	(8, 2, 9450);
+
+
+
+INSERT INTO public.employe
+	(fonction, id_pizzeria, adresse_mail, numero_portable, nom, prenom, mdp) 
+VALUES 
+	('Responsable', 1, 'responsable@ocpizza.fr', 1050609080, 'PAUL', 'Michel', MD5('lavachequirit')),
+	('Pizzaiolo', 1, 'pizzaiolo1@ocpizza.fr', 1050609080, 'FOLAS', 'Julia', MD5('lavachequirit')),
+	('Pizzaiolo', 1, 'pizzaiolo2@ocpizza.fr', 1050609080, 'HIDAS', 'Michel', MD5('lavachequirit')),
+	('Pizzaiolo', 1, 'pizzaiolo3@ocpizza.fr', 1050609080, 'PAUL', 'Julia', MD5('lavachequirit')),
+	('Livreur', 1, 'livreur1@ocpizza.fr', 1050609080, 'OCEROO', 'Michel', MD5('lavachequirit')),
+	('Livreur', 1, 'livreur2@ocpizza.fr', 1050609080, 'HIDAS', 'Paul', MD5('lavachequirit')),
+	('Livreur', 1, 'livreur3@ocpizza.fr', 1050609080, 'OCEROO', 'Julia', MD5('lavachequirit')),
+	('Responsable', 2, 'responsable@ocpizza.fr', 1050609080, 'PAUL', 'Michel', MD5('lavachequirit')),
+	('Pizzaiolo', 2, 'pizzaiolo5@ocpizza.fr', 1050609080, 'OCEROO', 'Michel', MD5('lavachequirit')),
+	('Pizzaiolo', 2, 'pizzaiolo6@ocpizza.fr', 1050609080, 'PAUL', 'Julia', MD5('lavachequirit')),
+	('Pizzaiolo', 2, 'pizzaiolo8@ocpizza.fr', 1050609080, 'OCEROO', 'Michel', MD5('lavachequirit')),
+	('Livreur', 2, 'livreur21@ocpizza.fr', 1050609080, 'PAUL', 'Michel', MD5('lavachequirit')),
+	('Livreur', 2, 'livreur22@ocpizza.fr', 1050609080, 'OCEROO', 'Julia', MD5('lavachequirit')),
+	('Livreur', 2, 'livreur23@ocpizza.fr', 1050609080, 'PAUL', 'Michel', MD5('lavachequirit')),
+	('Responsable', 3, 'responsable@ocpizza.fr', 1050609080, 'OCEROO', 'Michel', MD5('lavachequirit')),
+	('Pizzaiolo', 3, 'pizzaiolo14@ocpizza.fr', 1050609080, 'PAUL', 'Julia', MD5('lavachequirit')),
+	('Pizzaiolo', 3, 'pizzaiolo9@ocpizza.fr', 1050609080, 'HIDAS', 'Michel', MD5('lavachequirit')),
+	('Pizzaiolo', 3, 'pizzaiolo3@ocpizza.fr', 1050609080, 'PAUL', 'Julia', MD5('lavachequirit')),
+	('Livreur', 3, 'livreur31@ocpizza.fr', 1050609080, 'HIDAS', 'Michel', MD5('lavachequirit')),
+	('Livreur', 3, 'livreur32@ocpizza.fr', 1050609080, 'PAUL', 'Julia', MD5('lavachequirit')),
+	('Livreur', 3, 'livreur33@ocpizza.fr', 1050609080, 'OCEROO', 'Michel', MD5('lavachequirit')),
+	('Responsable', 4, 'responsable@ocpizza.fr', 1050609080, 'OCEROO', 'Robae', MD5('lavachequirit')),
+	('Pizzaiolo', 4, 'pizzaiolo11@ocpizza.fr', 1050609080, 'PAUL', 'Robae', MD5('lavachequirit')),
+	('Pizzaiolo', 4, 'pizzaiolo12@ocpizza.fr', 1050609080, 'POULKATOU', 'Julia', MD5('lavachequirit')),
+	('Pizzaiolo', 4, 'pizzaiolo13@ocpizza.fr', 1050609080, 'PAUL', 'Robae', MD5('lavachequirit')),
+	('Livreur', 4, 'livreur41@ocpizza.fr', 1050609080, 'POULKATOU', 'Robae', MD5('lavachequirit')),
+	('Livreur', 4, 'livreur42@ocpizza.fr', 1050609080, 'PAUL', 'Robae', MD5('lavachequirit')),
+	('Responsable', 5, 'responsable@ocpizza.fr', 1050609080, 'POULKATOU', 'Robae', MD5('lavachequirit')),
+	('Pizzaiolo', 5, 'pizzaiolo23@ocpizza.fr', 1050609080, 'OCEROO', 'Lain', MD5('lavachequirit')),
+	('Pizzaiolo', 5, 'pizzaiolo24@ocpizza.fr', 1050609080, 'PAUL', 'Julia', MD5('lavachequirit')),
+	('Pizzaiolo', 5, 'pizzaiolo26@ocpizza.fr', 1050609080, 'OCEROO', 'Lain', MD5('lavachequirit')),
+	('Livreur', 5, 'livreur51@ocpizza.fr', 1050609080, 'PAUL', 'Lain', MD5('lavachequirit')),
+	('Livreur', 5, 'livreur52@ocpizza.fr', 1050609080, 'POULKATOU', 'Julia', MD5('lavachequirit')),
+	('Responsable', 6, 'responsable@ocpizza.fr', 1050609080, 'POULKATOU', 'Lain', MD5('lavachequirit')),
+	('Pizzaiolo', 6, 'pizzaiolo24@ocpizza.fr', 1050609080, 'HIDAS', 'Lain', MD5('lavachequirit')),
+	('Pizzaiolo', 6, 'pizzaiolo23@ocpizza.fr', 1050609080, 'POULKATOU', 'Julia', MD5('lavachequirit')),
+	('Pizzaiolo', 6, 'pizzaiolo26@ocpizza.fr', 1050609080, 'POULKATOU', 'Lain', MD5('lavachequirit')),
+	('Pizzaiolo', 6, 'pizzaiolo21@ocpizza.fr', 1050609080, 'HIDAS', 'Lain', MD5('lavachequirit')),
+	('Livreur', 6, 'livreur61@ocpizza.fr', 1050609080, 'OCEROO', 'Julia', MD5('lavachequirit')),
+	('Livreur', 6, 'livreur62@ocpizza.fr', 1050609080, 'POULKATOU', 'HIDAS', MD5('lavachequirit')),
+	('Livreur', 6, 'livreur63@ocpizza.fr', 1050609080, 'OCEROO', 'Lain', MD5('lavachequirit')),
+	('Responsable', 7, 'responsable@ocpizza.fr', 1050609080, 'POULKATOU', 'Lain', MD5('lavachequirit')),
+	('Pizzaiolo', 7, 'pizzaiolo31@ocpizza.fr', 1050609080, 'PAUL', 'Julia', MD5('lavachequirit')),
+	('Pizzaiolo', 7, 'pizzaiolo32@ocpizza.fr', 1050609080, 'POULKATOU', 'Lain', MD5('lavachequirit')),
+	('Pizzaiolo', 7, 'pizzaiolo33@ocpizza.fr', 1050609080, 'HIDAS', 'Julia', MD5('lavachequirit')),
+	('Pizzaiolo', 7, 'pizzaiolo34@ocpizza.fr', 1050609080, 'POULKATOU', 'Lain', MD5('lavachequirit')),
+	('Livreur', 7, 'livreur71@ocpizza.fr', 1050609080, 'POULKATOU', 'Julia', MD5('lavachequirit')),
+	('Livreur', 7, 'livreur72@ocpizza.fr', 1050609080, 'PAUL', 'Lain', MD5('lavachequirit')),
+	('Livreur', 7, 'livreur73@ocpizza.fr', 1050609080, 'POULKATOU', 'Julia', MD5('lavachequirit')),
+	('Responsable', 8, 'responsable@ocpizza.fr', 1050609080, 'POULKATOU', 'Lain', MD5('lavachequirit')),
+	('Pizzaiolo', 8, 'pizzaiolo35@ocpizza.fr', 1050609080, 'HIDAS', 'Lain', MD5('lavachequirit')),
+	('Pizzaiolo', 8, 'pizzaiolo36@ocpizza.fr', 1050609080, 'POULKATOU', 'Julia', MD5('lavachequirit')),
+	('Livreur', 8, 'livreur81@ocpizza.fr', 1050609080, 'PAUL', 'Lain', MD5('lavachequirit')),
+	('Livreur', 8, 'livreur82@ocpizza.fr', 1050609080, 'OCEROO', 'Lain', MD5('lavachequirit')),
+	('Livreur', 8, 'livreur83@ocpizza.fr', 1050609080, 'PAUL', 'Julia', MD5('lavachequirit'));
+
+
+
+INSERT INTO public.client 
+	(numero_portable, nom, prenom, adresse_mail, adresse, code_postale, ville, mdp)
+VALUES
+	(8754213265, 'URSUL', 'Loris', 'loris.ursul@email.fr', '45 rue de la rue', 45785, 'prihstin', MD5('laCanardquiChante')),
+	(8552207410, 'URUL', 'Janne', 'client12@email.fr', ' Mabbs Lane', 68524, 'axotwood', MD5('laCanardquiChante')),
+	(9663852074, 'URSU', 'Jacque', 'client13@email.fr', ' Marrat Close', 76738, 'japus', MD5('laCanardquiChante')),
+	(5263415263, 'USUL', 'Loi', 'client14@email.fr', 'Mayfield Glade', 95435, 'teevale', MD5('laCanardquiChante')),
+	(7496857485, 'UL', 'Lois', 'client15@email.fr', 'Hardy Row', 43056, 'sturlens', MD5('laCanardquiChante')),
+	(4152639685, 'SUL', 'Los', 'client16@email.fr', 'Bryony Orchards', 78634, 'pland', MD5('laCanardquiChante')),
+	(3625144758, 'RSUL', 'Lis', 'client17@email.fr', 'Lodore Road', 76456, 'qrore', MD5('laCanardquiChante')),
+	(0100203040, 'RUL', 'oris', 'client18@email.fr', ' Marlborough Gardens', 12347, 'ebrento', MD5('laCanardquiChante')),
+	(1020304050, 'URUL', 'Lori', 'client19@email.fr', ' Prince Of Wales Firs', 65894, 'amfast', MD5('laCanardquiChante')),
+	(4243454649, 'ODINE', 'ois', 'client10@email.fr', ' Navigation Lanes', 73756, 'osegend', MD5('laCanardquiChante')),
+	(1012131415, 'URSUF', 'ris', 'client11@email.fr', 'Shaftesbury Dene', 74685, 'strodence', MD5('laCanardquiChante')),
+	(2425262320, 'URSPO', 'Loi', 'client21@email.fr', ' Swift Reach', 45678, 'yramery', MD5('laCanardquiChante')),
+	(5152535654, 'URSA', 'Lors', 'client31@email.fr', 'Saddlers Path', 49876, 'criby', MD5('laCanardquiChante')),
+	(7475787976, 'URDAL', 'Lris', 'client41@email.fr', 'Ashton Orchards', 56789, 'slurgh', MD5('laCanardquiChante')),
+	(8485868987, 'UIOL', 'Laqris', 'client51@email.fr', 'Main Road Brereton', 40456, 'lane', MD5('laCanardquiChante')),
+	(9494959693, 'UKOUL', 'Leris', 'client61@email.fr', 'Rosslyn Oaks', 789456, 'vralo', MD5('laCanardquiChante'));
+
+
+
+INSERT INTO public.commande
+	(id_pizzeria, statut, payee, livraison, id_client, date_heure)
+VALUES
+	(1, 'En préparation', TRUE, TRUE, 1, '2021-12-19 19:21'),
+	(1, 'Prête', FALSE, FALSE, 2, '2021-12-17 17:45'),
+	(2, 'En livraison', FALSE, TRUE, 3, '2021-12-16 17:21'),
+	(2, 'En préparation', TRUE, TRUE, 4, '2021-12-14 20:17'),
+	(3, 'Prête', TRUE, FALSE, 5, '2021-12-12 14:20'),
+	(3, 'En attente de préparation', FALSE, TRUE, 6, '2021-12-19 14:34'),
+	(4, 'Prête', TRUE, TRUE, 7, '2021-12-19 15:24'),
+	(4, 'En préparation', TRUE, FALSE, 8, '2021-12-19 04:21'),
+	(5, 'En attente de préparation', TRUE, TRUE, 9, '2021-12-19 05:21'),
+	(5, 'En préparation', TRUE, TRUE, 10, '2021-12-19 06:21'),
+	(6, 'En livraison', TRUE, TRUE, 11, '2021-12-10 17:21'),
+	(6, 'En préparation', FALSE, TRUE, 12, '2021-12-11 19:21'),
+	(7, 'En livraison', FALSE, TRUE, 13, '2021-12-11 12:21'),
+	(7, 'En attente de préparation', TRUE, TRUE, 14, '2021-12-13 11:21'),
+	(8, 'En préparation', TRUE, TRUE, 15, '2021-12-19 13:21'),
+	(8, 'Prête', TRUE, FALSE, 16, '2021-12-19 19:51');
+
+
+
+INSERT INTO public.quantitee
+	(id_commande, id_pizza, quantitee)
+VALUES
+	(1, 1, 3),
+	(1, 2, 5),
+	(2, 3, 6),
+	(2, 4, 8),
+	(3, 5, 9),
+	(3, 6, 10),
+	(4, 7, 1),
+	(4, 8, 4),
+	(5, 8, 7),
+	(5, 7, 6),
+	(6, 6, 3),
+	(6, 5, 2),
+	(7, 4, 13),
+	(7, 3, 5),
+	(8, 2, 8),
+	(8, 1, 7);
